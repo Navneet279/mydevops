@@ -1,0 +1,21 @@
+---
+- name: DB
+  hosts: localhost
+  tasks:
+   - name: Creating db instance
+     rds:
+       command: create
+       instance_name: "mattermost-db"
+       db_engine: postgres
+       size: 10
+       #key_name: "Navneet"
+       aws_access_key: "AKIAIRQ6WRUZ4GCC5P5Q"  # check  this from IAM role
+       aws_secret_key: "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" # check  this from IAM role
+       instance_type: db.t2.micro
+       region: "us-east-2"
+       username: "mmuser"
+       password: "masterpassy"
+       tags:
+         Environment: prod
+         Application: mattermost
+         register: rdsmachines
